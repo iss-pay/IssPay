@@ -10,5 +10,7 @@ module IssPay
     many_to_many :receivers, class: 'IssPay::User',
                   join_table: :transactions,
                   left_key: :receiver, right_key: :user_id
+
+    
   end
 end

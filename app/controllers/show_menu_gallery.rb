@@ -4,9 +4,12 @@ module IssPay
     
     route('show_menu_gallery') do |routing|
       
-      routing.get do
-        result = GetMenuGallery.call('snack')
-        result
+      routing.on String do |category|
+        
+        routing.get do
+          result = GetMenuGallery.call(category)
+          result
+        end
       end
     end
   end

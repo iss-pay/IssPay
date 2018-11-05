@@ -13,6 +13,9 @@ gem 'json', '~> 2.1'
 gem 'roar', '~> 1.1'
 gem 'multi_json', '~> 1.13', '>= 1.13.1'
 
+#xlsx reader
+gem 'simple_xlsx_reader', '~> 1.0', '>= 1.0.4'
+
 #service
 gem 'dry-monads', '~> 1.1'
 gem 'dry-transaction', '~> 0.13.0'
@@ -26,7 +29,6 @@ gem 'roda', '~> 3.13'
 
 #database and orm
 gem 'sequel', '~> 5.13'
-gem 'sqlite3', '~> 1.3', '>= 1.3.13'
 gem 'redis-rack', '~> 2.0', '>= 2.0.4' #nosql for session management
 gem 'hirb', '~> 0.7.3' #pretty format for database
 
@@ -38,3 +40,11 @@ gem 'rbnacl-libsodium', '~> 1.0', '>= 1.0.16'
 
 #http transfer
 gem 'http', '~> 4.0'
+
+group :environments, :test do
+  gem 'sqlite3', '~> 1.3', '>= 1.3.13'
+end
+
+group :production do
+  gem 'pg', '~> 1.1', '>= 1.1.3'
+end

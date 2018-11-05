@@ -1,0 +1,9 @@
+---
+  development:
+    DB_FILENAME: 'db/iss_pay.db'
+    API_URL : 'http://localhost:9292/api/v1/'
+    MESSAGE_ID: '1504743252927131'
+  test:
+    DB_FILE_NAME: 'db/iss_pay_test.db'
+    API_URL : 'http://localhost:9292/api/v1/'   
+    MESSAGE_ID: '1504743252927131'

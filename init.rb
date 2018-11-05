@@ -1,7 +1,7 @@
 require 'hirb'
 require 'pry'
 
-folders = %w[config app]
+folders = %w[config app lib]
 
 folders.each do |folder|
   require "./#{folder}/init.rb"
