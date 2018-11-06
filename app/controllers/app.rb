@@ -23,7 +23,11 @@ module IssPay
           routing.multi_route
 
           routing.get do
-            { "message" => "ISS Pay Api is running." }
+            {
+              "messages": [
+                {"text": "ISSPAY v1 API Running!"}
+              ]
+             }
           end
         end
       end
