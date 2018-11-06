@@ -5,7 +5,7 @@ module IssPay
   
   class App < Roda
     plugin :render, engine: 'erb', views: 'app/views'
-    plugin :assets, css: 'style.css', js: ['main.js', 'chartkick.js', 'admin.js'], path: 'app/assets'
+    plugin :assets, css: 'style.css', js: ['chartkick.js', 'application.js'], path: 'app/assets'
     plugin :json
     plugin :all_verbs
     plugin :multi_route
