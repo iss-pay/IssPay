@@ -41,6 +41,9 @@ gem 'rbnacl-libsodium', '~> 1.0', '>= 1.0.16'
 #http transfer
 gem 'http', '~> 4.0'
 
+#Graph for Data Visualization
+gem 'chartkick', '~> 1.4', '>= 1.4.1'
+
 group :environments, :test do
   gem 'sqlite3', '~> 1.3', '>= 1.3.13'
 end

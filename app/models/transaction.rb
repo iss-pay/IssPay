@@ -2,6 +2,14 @@ module IssPay
   
   class Transaction < Sequel::Model(:transactions)
 
+    def item
+      Item.find(id: item_id)
+    end
+
+    def before_create
+      self.created_at ||= Time.now
+    end    
+
     def after_save
       if self.type == 'purchase'
         purchase_with('create')

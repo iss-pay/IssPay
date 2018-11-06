@@ -1,0 +1,26 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="/">Iss Pay</a>
+
+  <% if @current_user %>
+    <ul class="nav justify-content-end">
+      <% if @current_user.admin? %>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" id='navbarDropdown' role='button' data-toggle='dropdown'  aria-haspopup="true" aria-expanded="false">
+            Admin Tasks
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a href="/item/list" class="dropdown-item">Item Management</a>
+            <a href="/user/list" class="dropdown-item">Member Management</a>
+            <a href="/transaction/list" class="dropdown-item">Transaction Management</a>
+          </div>
+        </li>
+      <% end %>
+      <li class='nav-item'>
+        <a class="nav-link" href="/user"> <%= @current_user.first_name %> </a>
+      </li>
+      <li class='nav-item'>
+        <a class='nav-link' href="/user/logout"> Logout </a>
+      </li>
+    </ul>
+  <% end %>
+</nav>

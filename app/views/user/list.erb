@@ -1,0 +1,35 @@
+
+  <div class="col mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope='col'>#</th>
+          <% IssPay::User.attributes.each do |attr| %>
+            <th scope='col'> <%= attr %> </th>
+          <% end %>
+          <th scope='col'>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.each_with_index do |user, index| %>
+          <tr>
+            <th scope='row'> <%= index+1 %> </th>
+            <td> <%= user.message_id %> </td>
+            <td> <%= user.email %> </td>
+            <td> <%= user.student_id %> </td>
+            <td> <%= user.full_name %> </td>
+            <td> <%= user.member_type %> </td>
+            <td> <%= user.credit %> </td>
+            <td> <%= user.purchase_debit %> </td>
+            <td> <%= user.transfer_debit %> </td>
+            <td>
+                <div class="btn-group-sm btn-group" role='group'>
+                  <button class='btn btn-success'>Edit</button>
+                  <button class='btn btn-success'>Delete</button>
+                </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </talbe>
+  </div>

@@ -1,10 +1,11 @@
 require 'roda'
 
+
 module IssPay
   
   class App < Roda
-    plugin :render, engine: 'slim', views: 'app/views'
-    plugin :assets, css: 'style.css', path: './app/assets'
+    plugin :render, engine: 'erb', views: 'app/views'
+    plugin :assets, css: 'style.css', js: ['main.js', 'chartkick.js'], path: 'app/assets'
     plugin :json
     plugin :all_verbs
     plugin :multi_route
@@ -12,19 +13,38 @@ module IssPay
 
     route do |routing|
       
-      routing.root do
-        { "message" => "ISS Pay Api is running." }
-      end
+      routing.assets
+
+      @current_user = session['current_user'].nil? ? nil : User.find(id: session['current_user']) 
 
       routing.on 'api' do
         routing.on 'v1' do
           
           routing.multi_route
+
+          routing.get do
+            { "message" => "ISS Pay Api is running." }
+          end
         end
       end
 
+      routing.root do
+        @controller = 'home'
+        view 'home', locals: { current_user: @current_user,}
+      end
+
       routing.on 'item' do
+        @controller = 'item'
         routing.route('item')
+      end
+
+      routing.on 'user' do
+        @controller = 'user'
+        routing.route('user')
+      end
+
+      routing.on 'chart' do
+        routing.route('chart')
       end
     end
   end
