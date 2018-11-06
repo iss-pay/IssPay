@@ -18,6 +18,19 @@ module IssPay
         end
       end
 
+      routing.on String do |user_id|
+        routing.put do
+          user = User.find(id: user_id)
+          params = routing.params
+          full_name = params.delete('full_name')
+          params['last_name'] = full_name[0]
+          params['first_name'] = full_name[1..-1]
+          user.update(params)
+          user.save
+          routing.params
+        end
+      end
+
       routing.on 'logout' do
         routing.get do
           session['current_user'] = nil

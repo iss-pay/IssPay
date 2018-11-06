@@ -19,6 +19,10 @@ module IssPay
       member_type == 'Admin'
     end
 
+    def balance 
+      credit + purchase_debit + transfer_debit
+    end
+
     def purchase_debits
       Transaction.where(user_id: id, type:'purchase').all
     end
