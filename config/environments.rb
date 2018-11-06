@@ -23,7 +23,9 @@ module IssPay
     end
 
     configure :production do
-      use Rack::Session::Redis, expire_after: ONE_MONTH, redis_server: App.config.REDIS_URL
+      use Rack::Session::Cookie, expire_after: ONE_MONTH,
+          secret: 'some secret'
+      # use Rack::Session::Redis, expire_after: ONE_MONTH, redis_server: App.config.REDIS_URL
     end
 
     configure do
