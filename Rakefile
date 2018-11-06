@@ -17,4 +17,12 @@ namespace :db do
     Sequel::Migrator.run(app.db, 'db/migrations')
     puts "migration work"
   end
+
+  task :run_importer do
+    require_relative 'init'
+    FILE_PATH = 'lib/xlsx_importer/excels/DB.xlsx'
+    db_importer = DBImporter.new(FILE_PATH)
+    db_importer.import('users')
+    db_importer.import('items')
+  end
 end
