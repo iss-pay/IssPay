@@ -16,7 +16,7 @@ module IssPay
     end
     
     def admin?
-      member_type == 'Admin'
+      member_type.gsub(' ',"") == 'Admin'
     end
 
     def balance 

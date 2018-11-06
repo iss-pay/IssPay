@@ -43,6 +43,10 @@ module IssPay
         routing.route('user')
       end
 
+      routing.on 'users' do
+        routing.route('users')
+      end
+
       routing.on 'chart' do
         routing.route('chart')
       end
