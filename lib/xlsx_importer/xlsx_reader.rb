@@ -38,7 +38,7 @@ class XlsxReader
   end
 
   def formatting(string)
-    if string.include?(".0")
+    if !string.nil? && string.include?(".0")
       string.to_i 
     else
       string
