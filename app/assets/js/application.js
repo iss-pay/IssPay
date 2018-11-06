@@ -1,14 +1,57 @@
 window.onload = function(){
 
+  function Alert(msg){
+    const alert = document.querySelector('.alert ');
+    const alertContent = alert.querySelector('.message');
+    alertContent.textContent = msg;
+    alert.style.display = 'block'; 
+  }
+
   function verifyController(controller_name){
     return document.querySelector('#'+ controller_name) !== null
   }
+
+  // -----------------------home page----------------------------- 
   if (verifyController('home')){
     $.get("/chart/user_purchased", function(data, status){
       new Chartkick.LineChart("chart-test", data, {adapter: 'google'});
     })
+
+    const selects = document.querySelectorAll('.purchase_form select')
+    const form_btn = document.querySelector('.purchase')
+
+    function purchase(){
+      const user_id = document.getElementById('current_user').dataset.id
+      const drink_id = selects[0].value
+      const snack_id = selects[1].value
+      let item_ids = 'null'
+      if(drink_id !== 'null'){
+        if(snack_id === 'null') item_ids = "item_ids[]="+drink_id
+        if(snack_id !== 'null') item_ids = `item_ids[]=${drink_id}&item_ids[]=${snack_id}`
+      }else if (snack_id !== 'null'){
+        item_ids = "item_ids[]="+snack_id
+      }
+      if(item_ids !== 'null'){
+        $.get(`/api/v1/add_transaction?type=purchase&message_id=${user_id}&${item_ids}`, function(data, status){
+          items = data.transactions.reduce((item, t) => {
+            return item + t.item.name + ";"
+          },"")
+          Alert(`成功購買 - ${items}`)
+        })
+      }
+    }
+
+    function selectChange(){
+      const drink_price = parseInt(selects[0].selectedOptions[0].dataset.price) 
+      const snack_price = parseInt(selects[1].selectedOptions[0].dataset.price) 
+      const amount = document.getElementById('amount')
+      amount.textContent = drink_price+snack_price
+    }
+    form_btn.addEventListener('click', purchase)
+    selects.forEach(select => select.addEventListener('change', selectChange))
   }
 
+  //--------------------------------user page---------------------------------------------
   if (verifyController('user')){
     
     const editButtons = document.querySelectorAll('button.edit')
@@ -52,6 +95,7 @@ window.onload = function(){
     })
   }
 
+  //-------------------------------item page---------------------------------------
   if (verifyController('item')){
 
     const item_form = document.querySelector(".item_form")

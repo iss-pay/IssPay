@@ -2,6 +2,14 @@
   <a class="navbar-brand" href="/">Iss Pay</a>
 
   <% if @current_user %>
+    <div id='current_user' data-id='<%= @current_user.message_id %>'></div>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
+          Purchase
+        </button>
+      </li>
+    </ul>
     <ul class="nav">
       <li class="nav-item">
         <span> Balance: <%= @current_user.balance %> </span>

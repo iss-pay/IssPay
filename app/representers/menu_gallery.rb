@@ -33,7 +33,7 @@ module IssPay
         "buttons":[
            {
               "type": "web_url",
-              "url": @purchase_url+"&item_id=#{item.id}",
+              "url": @purchase_url+"&item_ids[]=#{item.id}",
               "title": "購買 #{item.price}元商品"
            }
         ]
