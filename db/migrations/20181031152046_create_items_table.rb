@@ -5,7 +5,7 @@ Sequel.migration do
     create_table :items do
       primary_key :id
 
-      Strng :item_name
+      String :item_name
       String :category
       String :image_url
       
