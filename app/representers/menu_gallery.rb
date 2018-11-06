@@ -1,9 +1,9 @@
 module IssPay
   
   class MenuGallery
-    def initialize(items)
+    def initialize(items, message_id)
       @items = items
-      @purchase_url = App.config.API_URL + "add_transaction?type=purchase&message_id=#{App.config.MESSAGE_ID}"
+      @purchase_url = App.config.API_URL + "add_transaction?type=purchase&message_id=#{message_id}"
     end
 
     def to_json
