@@ -29,10 +29,10 @@ module IssPay
       {
         "title": item.name,
         "image_url": item.image_url,
-        "subtitle": "NTD$ #{item.price}, Total: #{item.quantity}",
+        "subtitle": "NTD$ #{item.price}",
         "buttons":[
            {
-              "type": "json_plugin_url",
+              "type": "web_url",
               "url": @purchase_url+"&item_id=#{item.id}",
               "title": "購買 #{item.price}元商品"
            }
