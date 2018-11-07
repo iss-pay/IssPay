@@ -1,2 +1,5 @@
-require_relative 'xlsx_importer/init.rb'
-# require_relative './FbMessenger/init.rb'
+folders = %w[xlsx_importer FbMessenger]
+
+folders.each do |folder|
+  require_relative "#{folder}/init.rb"
+end
