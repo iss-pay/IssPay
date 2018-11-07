@@ -9,7 +9,7 @@ module IssPay
         transactions = items.map do |item|
           Transaction.create(user_id: user.id, item_id: item.id, type: 'purchase', amount: item.price)
         end
-        send_notification(data['message_id'], items)
+        # send_notification(data['message_id'], items)
         {
           transactions: transactions.map {|t| transaction_json(t, user)}
         }
@@ -34,11 +34,11 @@ module IssPay
 
     private
 
-    def self.send_notification(message_id, items)
-      bot = FbMessenger::Bot::Sender.new(message_id)
-      items = items.map(&:name).reduce{ |result, name| result + "; #{name}"  }
-      bot.send_text("成功購買#{items}")
-    end
+    # def self.send_notification(message_id, items)
+    #   bot = FbMessenger::Bot::Sender.new(message_id)
+    #   items = items.map(&:name).reduce{ |result, name| result + "; #{name}"  }
+    #   bot.send_text("成功購買#{items}")
+    # end
 
     def self.transaction_json(transaction, user)
       {
