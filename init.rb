@@ -15,8 +15,8 @@ include IssPay
 #   Hirb::View.view_or_page_output(args[1]) || old_print.call(*args)
 # end
 
-VIC = '1277419499034510'
-BOT = FbMessenger::Bot::Sender.new(VIC)
-ITEMS = Item.where(category: 'Drink').all[0..5]
-MENU = Representer::Menu.new(ITEMS, VIC)
-BOT.elements = MENU.to_json
+# VIC = '1277419499034510'
+# BOT = FbMessenger::Bot::Sender.new(VIC)
+# ITEMS = Item.where(category: 'Drink').all[0..5]
+# MENU = Representer::Menu.new(ITEMS, VIC)
+# BOT.elements = MENU.to_json
