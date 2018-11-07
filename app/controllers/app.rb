@@ -58,6 +58,10 @@ module IssPay
       routing.on 'chart' do
         routing.route('chart')
       end
+
+      routing.on 'webhook' do
+        routing.route('webhook')
+      end
     end
   end
 end
