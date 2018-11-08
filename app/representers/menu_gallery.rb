@@ -22,7 +22,7 @@ module IssPay
     def item_element(item)
       {
         "title": "#{item.name}: $#{item.price}",
-        "url": @purchase_url
+        "url": @purchase_url,
         "type": "json_plugin_url"
       }
     end
