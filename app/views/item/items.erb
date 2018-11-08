@@ -18,14 +18,14 @@
           <% item.drinks.each_with_index do |drink, index| %>
             <tr id="<%=drink.id%>">
               <th scope='row'> <%= index+1 %> </th>
-              <td><%= drink.name %></td>
-              <td><%= drink.quantity %></td>
-              <td><%= drink.price %></td>
-              <td> <img src="<%= drink.image_url %>" width="60" height="60"></td>
+              <td data-attr='name'><%= drink.name %></td>
+              <td data-attr='quantity'><%= drink.quantity %></td>
+              <td data-attr='price'><%= drink.price %></td>
+              <td data-attr='image_url'> <img src="<%= drink.image_url %>" width="60" height="60"></td>
               <td> Drink </td>
               <td>
                 <div class="btn-group-sm btn-group" role='group'>
-                  <button class='btn btn-success'>Edit</button>
+                  <button class='edit btn btn-success' data-id="<%= drink.id %>" >Edit</button>
                   <button class='btn btn-success'>Delete</button>
                 </div>
               </td>
@@ -56,7 +56,7 @@
               <td> Snack </td>
               <td>
                 <div class="btn-group-sm btn-group" role='group'>
-                  <button class='btn btn-success'>Edit</button>
+                  <button class='edit btn btn-success' data-id="<%=snack.id%>">Edit</button>
                   <button class='btn btn-success'>Delete</button>
                 </div>
               </td>

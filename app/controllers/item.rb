@@ -2,10 +2,10 @@ module IssPay
   
   class App < Roda
     route('item') do |routing|
+
       routing.on 'list' do
         routing.get do
-          @item = Item
-          view 'item/list', locals: {item: @item}
+
         end
       end
 

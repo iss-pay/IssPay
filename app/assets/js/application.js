@@ -11,6 +11,47 @@ window.onload = function(){
     return document.querySelector('#'+ controller_name) !== null
   }
 
+  function editHandler(btn, start, end){
+    const tr = document.getElementById(btn.dataset.id)
+    let tds = Array.from(tr.querySelectorAll('td')).slice(start, end)
+    tds.forEach(td => {
+      let html
+      if(td.dataset.attr == 'image_url'){
+        html = `<input name="${td.dataset.attr}" value="${td.children[0].src}" size="3" >`
+      }else{
+        html = `<input name="${td.dataset.attr}" value="${td.textContent}" size="3" >`
+      }
+      td.innerHTML = html
+    });
+    btn.textContent = 'Update'
+  }
+
+  function updateHandler(btn, url){
+    const tr = document.getElementById(btn.dataset.id)
+    let inputs = Array.from(tr.querySelectorAll('input'))
+    data = {}
+    inputs.forEach(input => { data[input.name] = input.value })
+    $.ajax({
+      url: url + btn.dataset.id,
+      type: 'PUT',
+      data: data,
+      success: function(data){
+        inputs.forEach(input => {
+          if(input.name == "image_url"){
+            console.log(input.value)
+            input.outerHTML = `<img src="${input.value}" width="60" height="60">`
+          }else{
+            input.outerHTML = input.value
+          }
+        });
+      },
+      failure: function(data){
+        console.log(data);
+      }
+    })
+    btn.textContent = 'Edit'
+  }
+
   // -----------------------home page----------------------------- 
   if (verifyController('home')){
     $.get("/chart/user_purchased", function(data, status){
@@ -56,40 +97,12 @@ window.onload = function(){
     
     const editButtons = document.querySelectorAll('button.edit')
 
-    function editHandler(btn){
-      const user_tr = document.getElementById(btn.dataset.user)
-      let tds = Array.from(user_tr.querySelectorAll('td')).slice(2, 8)
-      tds.forEach(td => {
-        const html = `<input name="${td.dataset.attr}" value="${td.textContent}">`
-        td.innerHTML = html
-      });
-      btn.textContent = 'Update'
-    }
-
-    function updateHandler(btn){
-      const user_tr = document.getElementById(btn.dataset.user)
-      let inputs = Array.from(user_tr.querySelectorAll('input'))
-      data = {}
-      inputs.forEach(input => { data[input.name] = input.value })
-      $.ajax({
-        url: '/user/' + btn.dataset.user,
-        type: 'PUT',
-        data: data,
-        success: function(data){
-          inputs.forEach(input => {
-            input.outerHTML = input.value
-          });
-        }
-      })
-      btn.textContent = 'Edit'
-    }
-
     editButtons.forEach(btn => {
       btn.addEventListener('click', function(){
         if(this.textContent === 'Edit'){
-          editHandler(this)
+          editHandler(this,2, 8)
         }else if(this.textContent === 'Update'){
-          updateHandler(this)
+          updateHandler(this, '/user/')
         }
       })
     })
@@ -135,6 +148,18 @@ window.onload = function(){
     }
 
     item_submit.addEventListener('click', submitForm)
+
+    const editBtns = document.querySelectorAll("tr .edit")
+
+    editBtns.forEach(btn => {
+      btn.addEventListener("click", function(){
+        if(this.textContent === 'Edit'){
+          editHandler(this, 0, 4)
+        }else if(this.textContent === 'Update'){
+          updateHandler(this, '/item/')
+        }
+      })
+    })
   }
 
 }
