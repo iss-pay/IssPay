@@ -12,7 +12,7 @@ module IssPay
       step :response_with_type
 
       def list_items(input)
-        input['items'] = Item.where(category: input['category']).all 
+        input['items'] = Item.where(category: input['category']){quantity > 0}.all 
         if input['items'] .empty?
           Failure(Representer::ChatBotMsg.new("沒有任何商品了!~", 'notice'))
         else

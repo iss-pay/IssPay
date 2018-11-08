@@ -22,3 +22,4 @@ VIC = '1277419499034510'
 # BOT.elements = MENU.to_json
 
 DATA = {"message_id" => VIC, "category" => "Drink", "page" => "1", "response_type" => 'chatbot_msg'}
+DATA1 = {"message_id" => VIC, "type" => "purchase", "item_ids" => ["103"]  }

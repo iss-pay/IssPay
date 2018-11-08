@@ -7,7 +7,7 @@ module IssPay
         @total = total
         @page = page.to_i + 1
         @message_id = message_id
-        @purchase_url = App.config.API_URL + "add_transaction?type=purchase&message_id=#{message_id}"
+        @purchase_url = App.config.API_URL + "create_transaction?response_type=chatbot_msg&type=purchase&message_id=#{message_id}"
       end
 
       def to_json
@@ -47,14 +47,14 @@ module IssPay
 
       def next_page_element(page, category, message_id)
         {
-          "title": " 1~8 item",
+          "title": "想看更多嗎",
           "image_url": "https://cdn1.iconfinder.com/data/icons/general-9/500/more-512.png",
           "subitle": "Total Items: 10",
           "buttons":[
             {
               "type": "json_plugin_url",
-              "url": "#{App.config.API_URL}item/list?category=#{category}&page=#{page}&message_id=#{message_id}&response_type=chatbot_msg",
-              "title": "next 8 items"
+              "url": "#{App.config.API_URL}items?category=#{category}&page=#{page}&message_id=#{message_id}&response_type=chatbot_msg",
+              "title": "來更多"
             }
           ]
         }
