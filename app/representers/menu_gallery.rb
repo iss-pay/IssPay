@@ -9,17 +9,11 @@ module IssPay
     def to_json
       items_elements = @items.map {|item| item_element(item)}
       {
-        "messages":[
+        "messages": [
           {
-            "attachment":{
-              "type":"template",
-              "payload":{
-                "template_type":"generic",
-                "image_aspect_ratio":"square",
-                "elements": items_elements
-              }
-            }
-          },
+            "text":  "Did you enjoy the last game of the CF Rockets?",
+            "quick_replies": items_elements
+          }
         ]
       }
     end
@@ -27,16 +21,9 @@ module IssPay
     private
     def item_element(item)
       {
-        "title": item.name,
-        "image_url": item.image_url,
-        "subtitle": "NTD$ #{item.price}",
-        "buttons":[
-           {
-              "type": "web_url",
-              "url": @purchase_url+"&item_ids[]=#{item.id}",
-              "title": "購買 #{item.price}元商品"
-           }
-        ]
+        "title": "#{item.name}: $#{item.price}",
+        "url": @purchase_url
+        "type": "json_plugin_url"
       }
     end
   end
