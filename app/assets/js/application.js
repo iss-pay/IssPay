@@ -44,9 +44,6 @@ window.onload = function(){
             input.outerHTML = input.value
           }
         });
-      },
-      failure: function(data){
-        console.log(data);
       }
     })
     btn.textContent = 'Edit'
