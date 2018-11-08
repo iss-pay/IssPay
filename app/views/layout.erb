@@ -31,5 +31,9 @@
   </div>
 
   <%= yield %>
+  <% if @current_user %>
+    <%= render :'shared/purchase_form' %>
+  <% end %>
+  
 </body>
 </html>
