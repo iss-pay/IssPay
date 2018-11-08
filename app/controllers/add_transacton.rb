@@ -7,7 +7,11 @@ module IssPay
         routing.get do
           puts routing.params
           result = AddTransaction.call(routing.params)
-          result
+          {
+            "messages": [
+              {"text": "Purchase successful."}
+            ]
+          }
         end
     end
   end

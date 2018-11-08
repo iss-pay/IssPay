@@ -32,7 +32,7 @@ module IssPay
         "subtitle": "NTD$ #{item.price}",
         "buttons":[
            {
-              "type": "web_url",
+              "type": "json_plugin_url",
               "url": @purchase_url+"&item_ids[]=#{item.id}",
               "title": "購買 #{item.price}元商品"
            }
