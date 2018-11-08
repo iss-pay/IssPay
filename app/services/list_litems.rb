@@ -14,7 +14,7 @@ module IssPay
       def list_items(input)
         input['items'] = Item.where(category: input['category']){quantity > 0}.all 
         if input['items'] .empty?
-          Failure(Representer::ChatBotMsg.new("沒有任何商品了!~", 'notice'))
+          Failure(Representer::ChatBotMsg.new("沒有任何商品了!~"))
         else
           Success(input)
         end
@@ -26,7 +26,7 @@ module IssPay
         input['paginated_items'] = input['items'].drop((current_page.to_i - 1) * 8).shift(8)
         
         if input['paginated_items'].empty?
-          Failure(Representer::ChatBotMsg.new("沒有任何商品了!~", 'notice'))
+          Failure(Representer::ChatBotMsg.new("沒有任何商品了!~"))
         else
           Success(input)
         end
