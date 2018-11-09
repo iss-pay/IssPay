@@ -52,11 +52,11 @@ module IssPay
 
       def send_balance
         text = @obj.balance < 0 ?  "餘額#{@obj.balance},還不來還錢!" : "餘額#{@obj.balance},還不來消費!"
-        [
+        {
           "messages":[
             {"text": text}
           ]
-        ]
+        }
       end
     end
   end
