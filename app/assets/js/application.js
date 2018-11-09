@@ -154,7 +154,7 @@ window.onload = function(){
     editBtns.forEach(btn => {
       btn.addEventListener("click", function(){
         if(this.textContent === 'Edit'){
-          editHandler(this, 0, 4)
+          editHandler(this, 0, 5)
         }else if(this.textContent === 'Update'){
           updateHandler(this, '/item/')
         }
