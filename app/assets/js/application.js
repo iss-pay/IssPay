@@ -62,16 +62,18 @@ window.onload = function(){
       const user_id = document.getElementById('current_user').dataset.id
       const drink_id = selects[0].value
       const snack_id = selects[1].value
-      let item_ids = 'null'
-      if(drink_id !== 'null'){
-        if(snack_id === 'null') item_ids = "item_ids[]="+drink_id
-        if(snack_id !== 'null') item_ids = `item_ids[]=${drink_id}&item_ids[]=${snack_id}`
-      }else if (snack_id !== 'null'){
-        item_ids = "item_ids[]="+snack_id
-      }
+      let item_ids = []
+      if(drink_id !== 'null') item_ids.push(drink_id)
+      if(snack_id !== 'null') item_ids.push(snack_id)
       if(item_ids !== 'null'){
-        $.get(`/api/v1/add_transaction?type=purchase&message_id=${user_id}&${item_ids}`, function(data, status){
-          items = data.transactions.reduce((item, t) => {
+        data = {
+          "type": "purchase",
+          "message_id": user_id,
+          "item_ids": item_ids
+        }
+        $.post("/api/v1/transaction", data, function(transactions, status){
+          const response = JSON.parse(transactions)
+          items = response['transactions'].reduce((item, t) => {
             return item + t.item.name + ";"
           },"")
           Alert(`成功購買 - ${items}`)

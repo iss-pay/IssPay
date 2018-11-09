@@ -6,7 +6,7 @@ module IssPay
                   left_key: :item_id, right_key: :user_id
 
     def self.attributes
-      ['name', 'quantity', 'price', 'image', 'category']
+      ['name', 'quantity', 'price', 'cost', 'image', 'category']
     end
 
     def self.drinks

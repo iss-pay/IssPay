@@ -6,6 +6,7 @@ module IssPay
 
       def initialize(obj)
         @obj = obj
+        @app = IssPay::App
       end
 
       def type
@@ -20,7 +21,22 @@ module IssPay
         amount = @obj.map(&:amount).reduce(:+)
         {
           "messages":[
-            {"text": "成功購買 #{items_name}, 總額 #{amount}"}
+            {"text": "成功購買 #{items_name}, 總額 #{amount}"},
+            {
+              "attachment": {
+                "payload": {
+                  "template_type": "button",
+                  "text": "按錯了嗎？這裡可以取消購買!!",
+                  "buttons": @obj.map do |transaction|
+                    {
+                      "type": "json_plugin_url",
+                      "title": "取消購買#{transaction.item.name}",
+                      "url": "#{@app.config.API_URL}delete_transaction/#{transaction.id}"
+                    }
+                  end
+                }
+              }
+            }
           ]
         }
       end

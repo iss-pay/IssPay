@@ -19,7 +19,7 @@ module IssPay
 
       routing.on 'api' do
         routing.on 'v1' do
-          routing.multi_route
+          routing.multi_route('v1')
         end
       end
 
@@ -30,34 +30,12 @@ module IssPay
 
       routing.on 'item' do
         @controller = 'item'
-        routing.post do
-          item = Item.create(routing.params)
-          item_amount = Item.where(category: routing.params['category']).all.count
-          {
-            name: item.name,
-            price: item.price,
-            quantity: item.quantity,
-            image_url: item.image_url,
-            category: item.category,
-            amount: item_amount
-          }
-        end
-        routing.on String do |item_id|
-          routing.put do
-            item = Item.find(id: item_id)
-            item.update(routing.params)
-            item.save 
-            routing.params
-          end
-        end
+        routing.route('item')
       end
 
       routing.on 'items' do
         @controller = 'item'
-        routing.get do
-          @item = Item
-          view 'item/items', locals: {item: @item}
-        end
+        routing.route('items')
       end
 
       routing.on 'user' do
@@ -66,11 +44,16 @@ module IssPay
       end
 
       routing.on 'users' do
+        @controller = 'user'
         routing.route('users')
       end
 
       routing.on 'transaction' do
-        
+      
+      end
+
+      routing.on 'transactions' do
+        routing.route('transactions')  
       end
 
       routing.on 'chart' do

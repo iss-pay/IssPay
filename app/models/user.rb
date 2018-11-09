@@ -48,7 +48,7 @@ module IssPay
     end
 
     def credits
-      Transaction.where(receiver: id).all
+      Transaction.where(receiver_id: id).all
     end
 
     def self.attributes 

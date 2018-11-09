@@ -5,3 +5,11 @@ span{
 .hidden{
   display: none;
 }
+
+li.paid-0{
+  color: blue;
+}
+
+li.paid-1{
+  color: red;
+}

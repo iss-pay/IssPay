@@ -2,10 +2,10 @@ module IssPay
 
   class App < Roda
     
-    route('item') do |routing|
+    route('item', 'v1') do |routing|
     end
 
-    route('items') do |routing|
+    route('items', 'v1') do |routing|
       routing.get do
         result = Service::ListItems.new.call(routing.params)
         if result.success?

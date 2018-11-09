@@ -1,5 +1,4 @@
-require 'dry-monads'
-require 'dry/transaction'
+
 module IssPay
 
   module Service
@@ -14,9 +13,11 @@ module IssPay
         input['items'] = input['item_ids'].map{|item_id| Item.find(id: item_id)} unless input['item_ids'].nil?
         input['recevier'] = User.find(message_id: input['receiver_id']) unless input['receiver_id'].nil?
         input['user'] = User.find(message_id: input['message_id']) unless input['message_id'].nil?
+
         if ( ( present?(input['items']) || present?(input['recevier']) ) && present?(input['user']) )
           Success(input)
         else
+          Failure()
         end
       end
 
