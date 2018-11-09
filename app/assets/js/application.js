@@ -49,12 +49,12 @@ window.onload = function(){
     btn.textContent = 'Edit'
   }
 
-  // -----------------------home page----------------------------- 
+  // -----------------------home page-----------------------------------------------------
   if (verifyController('home')){
     $.get("/chart/user_purchased", function(data, status){
       new Chartkick.LineChart("chart-test", data, {adapter: 'google'});
     })
-
+    //----------------------purchase item----------------------------
     const selects = document.querySelectorAll('.purchase_form select')
     const form_btn = document.querySelector('.purchase')
 
@@ -111,6 +111,7 @@ window.onload = function(){
     const item_form = document.querySelector(".item_form")
     const item_submit = document.querySelector(".item_form .btn")
 
+    //-----------------------------create new item---------------------------------
     function submitForm(){
       console.log('click')
       const inputs = item_form.querySelectorAll("input")

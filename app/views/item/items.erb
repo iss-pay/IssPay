@@ -49,10 +49,10 @@
           <% item.snacks.each_with_index do |snack, index| %>
             <tr id="<%=snack.id%>">
               <th scope='row'> <%= index+1 %> </th>
-              <td><%= snack.name %></td>
-              <td><%= snack.quantity %></td>
-              <td><%= snack.price %></td>
-              <td> <img src="<%= snack.image_url %>" width="60" height="60"></td>
+              <td data-attr='name'><%= snack.name %></td>
+              <td data-attr='quantity'><%= snack.quantity %></td>
+              <td data-attr='price'><%= snack.price %></td>
+              <td data-attr='image_url'> <img src="<%= snack.image_url %>" width="60" height="60"></td>
               <td> Snack </td>
               <td>
                 <div class="btn-group-sm btn-group" role='group'>

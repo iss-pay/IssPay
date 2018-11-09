@@ -12,8 +12,8 @@ module IssPay
 
 
     route do |routing|
-      
-      routing.assets
+      routing.assets 
+     
 
       @current_user = session['current_user'].nil? ? nil : User.find(id: session['current_user']) 
 
@@ -69,12 +69,12 @@ module IssPay
         routing.route('users')
       end
 
-      routing.on 'chart' do
-        routing.route('chart')
+      routing.on 'transaction' do
+        
       end
 
-      routing.on 'webhook' do
-        routing.route('webhook')
+      routing.on 'chart' do
+        routing.route('chart')
       end
     end
   end
