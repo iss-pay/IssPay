@@ -24,6 +24,7 @@ module IssPay
             {"text": "成功購買 #{items_name}, 總額 #{amount}"},
             {
               "attachment": {
+                "type": "template",
                 "payload": {
                   "template_type": "button",
                   "text": "按錯了嗎？這裡可以取消購買!!",
