@@ -22,10 +22,10 @@ module IssPay
         }
         user = User.find(message_id: data['message_id'])
         if !user.nil?
-          Representer::ChatBotMsg.new("Hello #{user.first_name}，你已經註冊過了喔~~")
+          Representer::ChatBotMsg.new("Hello #{user.first_name}，你已經註冊過了喔~~").general_response
         else
           user = User.create(data)
-          Representer::ChatBotMsg.new("Hello #{user.first_name}，成功註冊為#{user.member_type}!!")
+          Representer::ChatBotMsg.new("Hello #{user.first_name}，成功註冊為#{user.member_type}!!").general_response
         end
       end
     end
