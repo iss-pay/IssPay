@@ -21,10 +21,13 @@ module IssPay
     def after_create
       
       if type == 'purchase'
-        purchased_item = Item.find(id: item_id)
-        quantity = purchased_item.quantity
-        purchased_item.quantity = quantity -1  
-        purchased_item.save
+        item.quantity_('purchase')
+      end
+    end
+
+    def after_destroy
+      if type == 'purchase'
+        item.quantity_('refund')
       end
     end
 

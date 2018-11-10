@@ -16,5 +16,16 @@ module IssPay
     def self.snacks
       where(category: 'Snack').all    
     end
+
+    def quantity_(method)
+      
+      if method == 'purchase'
+        self.quantity = self.quantity - 1
+        self.save
+      elsif method == 'refund'
+        sel.fquantity = self.quantity + 1
+        self.save
+      end
+    end
   end
 end
