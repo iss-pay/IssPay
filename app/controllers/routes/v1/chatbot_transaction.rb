@@ -17,5 +17,15 @@ module IssPay
         end
       end 
     end
+
+    route('pay_all_transactions', 'v1') do |routing|
+      routing.on String do |message_id|
+        result = Service::DeleteTransactions.new.call(message_id)
+        if result.success?
+          amount = result.success.map(&:amount).reduce(:+)
+          Representer::ChatBotMsg.new("總共還款#{amount}元~~~").general_response
+        end
+      end
+    end
   end
 end

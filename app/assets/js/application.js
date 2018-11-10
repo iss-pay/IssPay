@@ -99,7 +99,7 @@ window.onload = function(){
     editButtons.forEach(btn => {
       btn.addEventListener('click', function(){
         if(this.textContent === 'Edit'){
-          editHandler(this,2, 8)
+          editHandler(this,2, 5)
         }else if(this.textContent === 'Update'){
           updateHandler(this, '/user/')
         }

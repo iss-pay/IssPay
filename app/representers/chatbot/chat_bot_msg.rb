@@ -47,14 +47,30 @@ module IssPay
           "messages": [
             {"text": @obj}
           ]
-         }
+        }
       end
 
       def send_balance
         text = @obj.balance < 0 ?  "餘額#{@obj.balance},還不來還錢!" : "餘額#{@obj.balance},還不來消費!"
         {
           "messages":[
-            {"text": text}
+            {"text": text},
+            {
+              "attachment": {
+                "type": "template",
+                "payload": {
+                  "template_type": "button",
+                  "text": "要還款了嗎???快按這裡還錢~~",
+                  "buttons":[
+                    {
+                      "type": "json_plugin_url",
+                      "title": "還$#{@obj.balance}元",
+                      "url": "#{@app.config.API_URL}pay_all_transactions/#{@obj.message_id}"
+                    }
+                  ]
+                }
+              }
+            }   
           ]
         }
       end

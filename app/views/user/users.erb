@@ -19,9 +19,9 @@
             <td data-attr='student_id'> <%= user.student_id %> </td>
             <td data-attr='full_name'> <%= user.full_name %> </td>
             <td data-attr='member_type'> <%= user.member_type %> </td>
-            <td data-attr='credit'> <%= user.credit %> </td>
-            <td data-attr='purchase_debit'> <%= user.purchase_debit %> </td>
-            <td data-attr='transfer_debit'> <%= user.transfer_debit %> </td>
+            <td> <%= user.credit %> </td>
+            <td> <%= user.debit('purchase') %> </td>
+            <td> <%= user.debit('transfer') %> </td>
             <td>
                 <div class="btn-group-sm btn-group" role='group'>
                   <button class='edit btn btn-success' data-id='<%=user.id%>'>Edit</button>

@@ -8,30 +8,12 @@
       </div>
       <div class="card-body">
         <ul class="list-group list-group-flush">
-          <% @current_user.purchase_debits.each do |debit| %>
-            <li class="shadow p-2 mb-1 bg-white rounded list-group-item paid-<%= debit.status%>"> 
-              <%= "Item : #{debit.item.name} ; 
-                    Price : #{debit.amount} ;
-                    Type : #{debit.type} debit ; 
-                    Time : #{debit.created_at.strftime(" %H:%M:%S - %b %d %Y")} ;"
-              %> 
-            </li>
-          <% end %>
-          <% @current_user.transfer_debits.each do |debit| %>
-            <li class="shadow p-2 mb-1 bg-white rounded list-group-item paid-<%= debit.status%>"> 
-              <%= "Item : #{debit.item.name} ; 
-                    Price : #{debit.amount} ;
-                    Type : #{debit.type} debit ; 
-                    Time : #{debit.created_at.strftime(" %H:%M:%S - %b %d %Y")} ;"
-              %> 
-            </li>
-          <% end %>
-          <% @current_user.credits.each do |credit| %>
-            <li class="shadow p-2 mb-1 bg-white rounded list-group-item"> 
-              <%= "Item : #{credit.item.name} ; 
-                    Price : #{credit.amount} ;
-                    Type : #{credit.type} credit ; 
-                    Time : #{credit.created_at.strftime(" %H:%M:%S - %b %d %Y")} ;"
+          <% @current_user.transactions('debit').each do |transaction| %>
+            <li class="shadow p-2 mb-1 bg-white rounded list-group-item paid-<%= transaction.status%>"> 
+              <%= "Item : #{transaction.item.name} ; 
+                    Price : #{transaction.amount} ;
+                    Type : #{transaction.type} debit ; 
+                    Time : #{transaction.created_at.strftime(" %H:%M:%S - %b %d %Y")} ;"
               %> 
             </li>
           <% end %>

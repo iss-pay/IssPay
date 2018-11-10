@@ -20,26 +20,18 @@ module IssPay
     end
 
     def balance 
-      credit + purchase_debit + transfer_debit
-    end
-
-    def purchase_debits
-      Transaction.where(user_id: id, type:'purchase').all
-    end
-
-    def transfer_debits
-      Transaction.where(user_id: id, type:'transfer').all
+      credit - debit
     end
 
     def favorite_food(nth)
-      food_sort = purchase_debits.group_by {|t| t.item_id}.sort_by {|k,v| v.count }.reverse
+      food_sort = transactions('debit', 'purchase').group_by {|t| t.item_id}.sort_by {|k,v| v.count }.reverse
       food_sort[0..nth-1].map do |t|
         {item: t[1][0].item, amount: t[1].count}
       end
     end
 
     def purchased_by_day
-      records = purchase_debits.group_by {|t| t.created_at.strftime("%Y-%m-%d")}
+      records = transactions('debit', 'purchase').group_by {|t| t.created_at.strftime("%Y-%m-%d")}
       result = {}
       records.each do |k,v|
         result[k] = v.inject(0) {|sum, t| sum += t.amount; sum}
@@ -47,12 +39,37 @@ module IssPay
       result
     end
 
-    def credits
-      Transaction.where(receiver_id: id).all
+    def transactions(type, debit_type=nil)
+      if type == 'debit'
+        debit_type.nil? ? Transaction.where(user_id: id).all : Transaction.where(user_id: id, type: debit_type).all
+      elsif type == 'credit'
+        Transaction.where(receiver_id: id).all
+      end
+    end
+
+    def debit(type=nil)
+      if type.nil? || type == 'purchase'
+        transactions = Transaction.where(user_id: id, status: 0).all
+      elsif type == 'transfer'
+        transactions = Transaction.where(user_id: id, type: type, status: 0).all
+      end 
+      sum_of_transactions(transactions)
+    end
+
+    def credit
+      transactions = Transaction.where(receiver_id: id, status: 0)
+      sum_of_transactions(transactions)
     end
 
     def self.attributes 
       ['message_id', 'email', 'student_id', 'name', 'member_type', 'credit', 'purchase_debit', 'transfer_debit']
+    end
+
+    private
+
+    def sum_of_transactions(transactions)
+      return 0 if transactions.empty?
+      transactions.map(&:amount).reduce(:+)
     end
   end
 end

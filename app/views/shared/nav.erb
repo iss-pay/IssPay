@@ -18,10 +18,10 @@
         <span> Credit: <%= @current_user.credit %> </span>
       </li>
       <li class="nav-item">
-        <span> Purchase Debit: <%= @current_user.purchase_debit %> </span>
+        <span> Purchase Debit: <%= @current_user.debit('purchase') %> </span>
       </li>
       <li class="nav-item">
-        <span> Transfer Debit: <%= @current_user.transfer_debit %> </span>
+        <span> Transfer Debit: <%= @current_user.debit('transfer') %> </span>
       </li>
     </ul>
 

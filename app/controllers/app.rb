@@ -20,6 +20,10 @@ module IssPay
       routing.on 'api' do
         routing.on 'v1' do
           routing.multi_route('v1')
+
+          routing.get do
+            Representer::ChatBotMsg.new("歡迎來到IssPay").general_response
+          end
         end
       end
 
