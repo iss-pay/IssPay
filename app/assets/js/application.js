@@ -162,4 +162,26 @@ window.onload = function(){
     })
   }
 
+  //-------------------------------transaction page------------------------------
+  if (verifyController('transaction')) {
+    select = document.getElementById('transaction_filter').querySelector('select')
+    
+    function renderTransactions(){
+      $.get(`/api/v1/transactions/${this.value}`, function(data, status){
+        console.log(data)
+        const transactions = JSON.parse(data).transactions
+        const transactions_list = document.querySelector('ul.transactions')
+        const html = transactions.map(transaction =>
+          `<li class="list-group-item paid-${transaction.status}">
+            ItmeName:${transaction.item.name}; Amount:${transaction.amount}
+          </li>`
+        ).reduce((html, li) =>  { return html + li}, '')
+        transactions_list.innerHTML = html
+      })
+    }
+
+
+    select.addEventListener('change', renderTransactions)
+  }
+
 }

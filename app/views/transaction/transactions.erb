@@ -1,16 +1,28 @@
 <div class="row container-fluid mt-3">
   <div class="col-4">
     <div class="card">
+      <div class="card-header text-center"> Transaction Filter </div>
       <div class="card-body text-center">
-        <div class="card-title"> 篩選器 </div>
-        
+        <form id="transaction_filter">
+          <div class="form-group">
+            <label for=""> Member </label>
+            <select name="message_id" class='form-control'>
+              <% User.all.each do |user| %>
+                <option value="<%= user.message_id %>"> <%= user.full_name %> </option>
+              <% end %> 
+            </select>
+          </div>
+        </form>
       </div>
     </div>
   </div>
   <div class="col-8">
     <div class="card">
+      <div class="card-header text-center"> Transaction Data </div>
       <div class="card-body text-center">
-        <div class="card-title"> 交易紀錄 </div>
+        <ul class="list-group transactions">
+          
+        </ul>
       </div>
     </div>
   </div>

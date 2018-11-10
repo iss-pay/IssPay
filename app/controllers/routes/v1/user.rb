@@ -11,6 +11,10 @@ module IssPay
         else
         end
       end
+
+      routing.post do
+        routing.params
+      end
     end
   end
 end

@@ -13,5 +13,15 @@ module IssPay
         end
       end
     end
+
+    route('transactions', 'v1') do |routing|
+      routing.on String do |message_id|
+        routing.get do
+          user = User.find(message_id: message_id)
+          transactions = Transaction.where(user_id: user.id).all
+          TransactionsRepresenter.new(Transactions.new(transactions)).to_json
+        end
+      end
+    end
   end
 end

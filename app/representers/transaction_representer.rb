@@ -16,6 +16,8 @@ module IssPay
       property :full_name
     end
     property :type
+    property :status
     property :amount
+    property :created_at
   end
 end

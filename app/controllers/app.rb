@@ -57,6 +57,7 @@ module IssPay
       end
 
       routing.on 'transactions' do
+        @controller = 'transaction'
         routing.route('transactions')  
       end
 
