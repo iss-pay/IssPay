@@ -13,7 +13,7 @@ module IssPay
       end
 
       routing.post do
-        routing.params
+        puts routing.params
       end
     end
   end
