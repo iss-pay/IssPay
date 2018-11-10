@@ -23,7 +23,7 @@ module IssPay
         self.quantity = self.quantity - 1
         self.save
       elsif method == 'refund'
-        sel.fquantity = self.quantity + 1
+        self.quantity = self.quantity + 1
         self.save
       end
     end
