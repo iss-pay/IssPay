@@ -1,0 +1,21 @@
+<div class="card" id="item_<%= item.id %>">
+  <div class="card-body">
+    <div class="row">
+      <div class="col col-lg-2 image">
+        <img src="<%= item.image_url %>" height="50" width="50">
+      </div>
+      <div class="col col-lg-6 info">
+        <span style= "display:block" class='name'> <%= item.name %></span>
+        <span class='badge badge-dark price'> 價格: <%= item.price %></span>
+        <span class='badge badge-dark cost'> 成本: <%= item.cost.nil? ? 0 : item.cost %></span>
+        <span class='badge badge-dark quantity'> 數量: <%= item.quantity %></span>
+      </div>
+      <div class="col col-lg-2 btns">
+        <div class="btn-group btn-group-sm ml-5 mt-4" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary" data-type='edit' data-toggle="modal" data-target=".edition">編輯</button>
+          <button type="button" class="btn btn-secondary" data-type='delete'>刪除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

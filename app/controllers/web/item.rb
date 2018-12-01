@@ -4,14 +4,13 @@ module IssPay
     route('item') do |routing|
       routing.post do
         item = Item.create(routing.params)
-        item_amount = Item.where(category: routing.params['category']).all.count
-        {
+        { 
+          id: item.id,
           name: item.name,
           price: item.price,
           quantity: item.quantity,
           image_url: item.image_url,
-          category: item.category,
-          amount: item_amount
+          category: item.category
         }
       end
       routing.on String do |item_id|
@@ -19,7 +18,7 @@ module IssPay
           item = Item.find(id: item_id)
           item.update(routing.params)
           item.save 
-          routing.params
+          ItemRepresenter.new(item).to_json
         end
       end
     end

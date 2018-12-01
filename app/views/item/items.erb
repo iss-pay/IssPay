@@ -1,71 +1,116 @@
-<div class="container-fluid">
-  <div class="row p-4 mt-1">
-    <%= render :'shared/item_form' %>
-  </div>
-  <div class="row mt-2 justify-content-center">
-    <div class="col-6">
-      <table class="table Drinks">
-        <thead>
-          <tr>
-            <th scope='col'> # </th>
-            <% item.attributes.each do |attr| %>
-              <th scope='col'> <%= attr %> </th>
-            <% end %>
-            <th scope='col'>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% item.drinks.each_with_index do |drink, index| %>
-            <tr id="<%=drink.id%>">
-              <th scope='row'> <%= index+1 %> </th>
-              <td data-attr='name'><%= drink.name %></td>
-              <td data-attr='quantity'><%= drink.quantity %></td>
-              <td data-attr='price'><%= drink.price %></td>
-              <td data-attr='cost'><%= drink.cost %></td>
-              <td data-attr='image_url'> <img src="<%= drink.image_url %>" width="60" height="60"></td>
-              <td> Drink </td>
-              <td>
-                <div class="btn-group-sm btn-group" role='group'>
-                  <button class='edit btn btn-success' data-id="<%= drink.id %>" >Edit</button>
-                  <button class='btn btn-success'>Delete</button>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="row container-fluid mt-3">
+  <div class="col-3">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center"> 商品 </h5>
+      </div>
+      <div class="card-body">
+        <form class="item_create_form">
+          <div class="form-group">
+            <label for="item_name"> 商品名稱 </label>
+            <input type="text" name="name" class='form-control' required>
+          </div>
+          <label for=""> 商品資訊 </label>
+          <div class="row form-group">
+            <div class="col">
+              <input type="number" min="0" step="1" name="price" class="form-control" placeholder="價錢" required> 
+            </div>
+            <div class="col">
+              <input type="number" min="0" step="1" name="cost" class="form-control" placeholder="成本" required>  
+            </div>
+             <div class="col">
+              <input type="number" min="0" step="1" name="quantity" class="form-control" placeholder="數量" required>  
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item_name"> 圖片網址 </label>
+            <input type="url" placeholder="https://example.com" pattern="https://.*" size="40" name="image_url" class='form-control' required>
+            <small class="form-text text-muted">圖片網住不能長於40個字母</small>
+          </div>
+          <label for="category">商品總類</label>
+          <div class="row">
+            <div class="col">
+              <select name="category" class='form-control'>
+                <option value="Drink">飲料</option>
+                <option value="Snack">零食</option>
+              </select>
+            </div>
+            <div class="col">
+              <button type="submit" class='btn btn-success'>新增</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <div class="col-6">
-      <table class="table Snacks">
-        <thead>
-          <tr>
-            <th scope='col'> # </th>
-            <% item.attributes.each do |attr| %>
-              <th scope='col'> <%= attr %> </th>
+  </div>
+  <div class="col-9">
+    <div class="card">
+      <div class="card-header text-center">
+        <div class="row">
+          <div class="col col-lg-2"><h5>商品清單</h5></div>
+          <div class="col col-lg-2">
+            <select class='custom-select' id='category_selector'>
+              <option value="Drink">飲料</option>
+              <option value="Snack">零食</option>
+            </select>
+          </div>
+        </div>       
+      </div>
+      <div class="card-body drinks row">
+        <div class="col">
+          <ul class="list-group item_list">
+            <% item.drinks[0..Item.drinks.length/2-1].each do |drink| %>
+              <%= render :'item/_item_card', locals: {item: drink} %>
             <% end %>
-            <th scope='col'>Action</th>
-          </tr>
-        </thead>
-                <tbody>
-          <% item.snacks.each_with_index do |snack, index| %>
-            <tr id="<%=snack.id%>">
-              <th scope='row'> <%= index+1 %> </th>
-              <td data-attr='name'><%= snack.name %></td>
-              <td data-attr='quantity'><%= snack.quantity %></td>
-              <td data-attr='price'><%= snack.price %></td>
-              <td data-attr='cost'><%= snack.cost %></td>
-              <td data-attr='image_url'> <img src="<%= snack.image_url %>" width="60" height="60"></td>
-              <td> Snack </td>
-              <td>
-                <div class="btn-group-sm btn-group" role='group'>
-                  <button class='edit btn btn-success' data-id="<%=snack.id%>">Edit</button>
-                  <button class='btn btn-success'>Delete</button>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </ul>
+        </div>
+        <div class="col">
+          <ul class="list-group item_list">
+            <% item.drinks[Item.drinks.length/2..-1].each do |drink| %>
+              <%= render :'item/_item_card', locals: {item: drink} %>
+            <% end %> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade edition" id='item_edit' tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+          <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">商品編輯</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="item_edit_form">
+          <div class="form-group">
+            <label for="item_name"> 商品名稱 </label>
+            <input type="text" name="name" class='form-control' required>
+          </div>
+          <label for=""> 商品資訊 </label>
+          <div class="row form-group">
+            <div class="col">
+              <input type="number" min="0" step="1" name="price" class="form-control" placeholder="價錢" required> 
+            </div>
+            <div class="col">
+              <input type="number" min="0" step="1" name="cost" class="form-control" placeholder="成本" required>  
+            </div>
+             <div class="col">
+              <input type="number" min="0" step="1" name="quantity" class="form-control" placeholder="數量" required>  
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="item_name"> 圖片網址 </label>
+            <input type="url" placeholder="https://example.com" pattern="https://.*" size="40" name="image_url" class='form-control' required>
+            <small class="form-text text-muted">圖片網住不能長於50個字母</small>
+          </div>
+          <button type="submit" id="edition_submit" class='btn btn-success' data-dismiss="modal">更新</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

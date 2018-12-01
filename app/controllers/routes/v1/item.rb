@@ -6,6 +6,22 @@ module IssPay
       routing.post do
         routing.params
       end
+
+      routing.is String do |item_id|
+        routing.put do
+          item = Item.find(id: item_id)
+          item.update(routing.params)
+          item.save 
+          ItemRepresenter.new(item).to_json
+        end
+
+        routing.delete do 
+          item = Item.find(id: item_id)
+          if !item.nil? && item.destroy
+            {"message" => "成功刪除#{item.name}"}
+          end
+        end
+      end
     end
 
     route('items', 'v1') do |routing|

@@ -13,3 +13,11 @@ li.paid-0{
 li.paid-1{
   color: red;
 }
+
+.test{
+  border: 2px solid black;
+}
+
+body#item #category_selector{
+  width: 100%;
+}
