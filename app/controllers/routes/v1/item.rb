@@ -3,6 +3,9 @@ module IssPay
   class App < Roda
     
     route('item', 'v1') do |routing|
+      routing.post do
+        routing.params
+      end
     end
 
     route('items', 'v1') do |routing|

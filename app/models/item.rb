@@ -18,7 +18,6 @@ module IssPay
     end
 
     def quantity_(method)
-      
       if method == 'purchase'
         self.quantity = self.quantity - 1
         self.save

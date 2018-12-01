@@ -142,7 +142,7 @@ window.onload = function(){
                           </div>
                         </td>
                       </tr>`          
-        console.log(html)
+        
         table.insertAdjacentHTML('beforeend', html)
       })
     }
