@@ -1,0 +1,26 @@
+=== puma startup: 2019-03-18 16:45:20 +0800 ===
+[14452] * Starting control server on unix:///tmp/puma-status-1552898720524-14452
+[14485] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14492] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14497] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14488] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14452] - Worker 0 (pid: 14485) booted, phase: 0
+[14452] - Worker 3 (pid: 14497) booted, phase: 0
+[14452] - Worker 2 (pid: 14492) booted, phase: 0
+[14452] - Worker 1 (pid: 14488) booted, phase: 0
+[14452] - Gracefully shutting down workers...
+[14452] === puma shutdown: 2019-03-18 16:49:40 +0800 ===
+[14452] - Goodbye!
+=== puma startup: 2019-03-18 16:49:42 +0800 ===
+[14733] * Starting control server on unix:///tmp/puma-status-1552898982017-14733
+[14766] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14772] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14776] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14770] + Gemfile in context: /home/vicxu/Projects/ISS_PAY/iss_pay_api/Gemfile
+[14733] - Worker 2 (pid: 14772) booted, phase: 0
+[14733] - Worker 0 (pid: 14766) booted, phase: 0
+[14733] - Worker 3 (pid: 14776) booted, phase: 0
+[14733] - Worker 1 (pid: 14770) booted, phase: 0
+[14733] - Gracefully shutting down workers...
+[14733] === puma shutdown: 2019-03-18 16:49:56 +0800 ===
+[14733] - Goodbye!

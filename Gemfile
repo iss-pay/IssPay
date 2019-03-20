@@ -43,8 +43,12 @@ gem 'http', '~> 4.0'
 
 #Graph for Data Visualization
 gem 'chartkick', '~> 1.4', '>= 1.4.1'
-gem 'pg'
+
 gem 'git'
 group :development, :test do
   gem 'sqlite3', '~> 1.3', '>= 1.3.13'
+end
+
+group :production do
+  gem 'pg'
 end

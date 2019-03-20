@@ -1,9 +1,9 @@
 module IssPay
 
   class App < Roda
-    
+
     route('user', 'v1') do |routing|
-      
+
       routing.on String do |message_id|
         if routing.params['response_type'] == 'chatbot_msg'
           user = User.find(message_id: message_id)
@@ -18,14 +18,14 @@ module IssPay
           'message_id' => routing.params['messenger user id'],
           'last_name' => routing.params['last name'],
           'first_name' => routing.params['first name'],
-          'member_type' => routing.params['MemberType']
+          'member_type' => routing.params['member_type']
         }
         user = User.find(message_id: data['message_id'])
         if !user.nil?
-          Representer::ChatBotMsg.new("Hello #{user.first_name}，你已經註冊過了喔~~").general_response
+          view 'chatfuel/text.json', locals: { texts:['hello'] }
         else
           user = User.create(data)
-          Representer::ChatBotMsg.new("Hello #{user.first_name}，成功註冊為#{user.member_type}!!").general_response
+          view 'chatfuel/text.json', locals: { texts:['hello'] }
         end
       end
     end

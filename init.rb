@@ -23,3 +23,5 @@ VIC = '1277419499034510'
 
 DATA = {"message_id" => VIC, "category" => "Drink", "page" => "1", "response_type" => 'chatbot_msg'}
 DATA1 = {"message_id" => VIC, "type" => "purchase", "item_ids" => ["103"]  }
+
+puts 'test'
