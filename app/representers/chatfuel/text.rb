@@ -1,7 +1,7 @@
 module ChatFuel
   class Text
-    def initialize(texts)
-      @texts = texts
+    def initialize(*texts)
+      @texts = *texts
     end
 
     def to_json

@@ -47,6 +47,7 @@ gem 'chartkick', '~> 1.4', '>= 1.4.1'
 gem 'git'
 group :development, :test do
   gem 'sqlite3', '~> 1.3', '>= 1.3.13'
+  gem 'minitest', '~> 5.11', '>= 5.11.3'
 end
 
 group :production do

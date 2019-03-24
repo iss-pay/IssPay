@@ -1,23 +1,23 @@
-# Change to match your CPU core count
-workers 4
+# # Change to match your CPU core count
+# workers 4
 
-# Min and Max threads per worker
-threads 1, 6
+# # Min and Max threads per worker
+# threads 1, 6
 
-app_dir = File.expand_path("../..", __FILE__)
-shared_dir = "#{app_dir}/shared"
+# app_dir = File.expand_path("../..", __FILE__)
+# shared_dir = "#{app_dir}/shared"
 
-# Default to production
-rack_env = ENV['RACK_ENV'] || "development"
-environment rack_env
+# # Default to production
+# rack_env = ENV['RACK_ENV'] || "development"
+# environment rack_env
 
-#Set up socket location
-# bind "unix://#{shared_dir}/sockets/puma.sock"
+# #Set up socket location
+# # bind "unix://#{shared_dir}/sockets/puma.sock"
 
-# Logging
-stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
+# # Logging
+# stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
-# Set master PID and state locations
-pidfile "#{shared_dir}/pids/puma.pid"
-state_path "#{shared_dir}/pids/puma.state"
-activate_control_app
+# # Set master PID and state locations
+# pidfile "#{shared_dir}/pids/puma.pid"
+# state_path "#{shared_dir}/pids/puma.state"
+# activate_control_app

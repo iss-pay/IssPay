@@ -1,2 +1,137 @@
 === puma startup: 2019-03-18 16:45:20 +0800 ===
 === puma startup: 2019-03-18 16:49:42 +0800 ===
+=== puma startup: 2019-03-24 12:49:41 +0800 ===
+=== puma startup: 2019-03-24 12:50:08 +0800 ===
+36.229.62.91 - - [24/Mar/2019:12:50:35 +0800] "GET / HTTP/1.1" 200 2392 0.1117
+36.229.62.91 - - [24/Mar/2019:12:50:36 +0800] "GET /assets/css/style.css HTTP/1.1" 200 218 0.0012
+36.229.62.91 - - [24/Mar/2019:12:50:36 +0800] "GET /assets/js/chartkick.js HTTP/1.1" 200 26324 0.0027
+36.229.62.91 - - [24/Mar/2019:12:50:36 +0800] "GET /assets/js/application.js HTTP/1.1" 200 10343 0.0051
+NoMethodError: undefined method `purchased_by_day' for nil:NilClass
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:11:in `block (3 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1068:in `always'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1059:in `_verb'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:681:in `get'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:9:in `block (2 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1133:in `if_match'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:799:in `on'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:7:in `block in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda/plugins/multi_route.rb:216:in `route'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/app.rb:65:in `block (2 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1133:in `if_match'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:799:in `on'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/app.rb:64:in `block in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:530:in `block in _roda_handle_main_route'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:528:in `catch'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:528:in `_roda_handle_main_route'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:420:in `block in base_rack_app_callable'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:232:in `context'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:226:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/tempfile_reaper.rb:15:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/lint.rb:49:in `_call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/lint.rb:37:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/show_exceptions.rb:23:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/common_logger.rb:33:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/chunked.rb:54:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/content_length.rb:15:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/configuration.rb:225:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:658:in `handle_request'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:472:in `process_client'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:332:in `block in run'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+36.229.62.91 - - [24/Mar/2019:12:50:41 +0800] "GET /favicon.ico HTTP/1.1" 404 - 0.0031
+36.229.62.91 - - [24/Mar/2019:12:50:41 +0800] "GET /chart/user_purchased HTTP/1.1" 500 100854 0.0989
+36.229.62.91 - - [24/Mar/2019:12:53:21 +0800] "GET /api/v1 HTTP/1.1" 200 44 0.0035
+104.209.176.191 - - [24/Mar/2019:12:53:48 +0800] "GET /api/v1 HTTP/1.1" 200 44 0.0023
+104.209.176.191 - - [24/Mar/2019:12:54:09 +0800] "GET /api/v1 HTTP/1.1" 200 44 0.0026
+36.229.62.91 - - [24/Mar/2019:12:54:34 +0800] "GET / HTTP/1.1" 200 2392 0.0390
+36.229.62.91 - - [24/Mar/2019:12:54:34 +0800] "GET /assets/css/style.css HTTP/1.1" 200 218 0.0058
+36.229.62.91 - - [24/Mar/2019:12:54:34 +0800] "GET /assets/js/chartkick.js HTTP/1.1" 200 26324 0.0074
+36.229.62.91 - - [24/Mar/2019:12:54:34 +0800] "GET /assets/js/application.js HTTP/1.1" 200 10343 0.0050
+NoMethodError: undefined method `purchased_by_day' for nil:NilClass
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:11:in `block (3 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1068:in `always'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1059:in `_verb'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:681:in `get'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:9:in `block (2 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1133:in `if_match'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:799:in `on'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:7:in `block in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda/plugins/multi_route.rb:216:in `route'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/app.rb:65:in `block (2 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1133:in `if_match'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:799:in `on'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/app.rb:64:in `block in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:530:in `block in _roda_handle_main_route'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:528:in `catch'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:528:in `_roda_handle_main_route'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:420:in `block in base_rack_app_callable'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:232:in `context'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:226:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/tempfile_reaper.rb:15:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/lint.rb:49:in `_call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/lint.rb:37:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/show_exceptions.rb:23:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/common_logger.rb:33:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/chunked.rb:54:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/content_length.rb:15:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/configuration.rb:225:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:658:in `handle_request'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:472:in `process_client'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:332:in `block in run'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+36.229.62.91 - - [24/Mar/2019:12:54:35 +0800] "GET /chart/user_purchased HTTP/1.1" 500 100995 0.0211
+36.229.62.91 - - [24/Mar/2019:12:54:36 +0800] "GET /favicon.ico HTTP/1.1" 404 - 0.0024
+36.229.62.91 - - [24/Mar/2019:13:10:53 +0800] "GET /api/v1/items?category=snake&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0138
+36.229.62.91 - - [24/Mar/2019:13:11:19 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0129
+36.229.62.91 - - [24/Mar/2019:13:12:04 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0045
+36.229.62.91 - - [24/Mar/2019:13:12:07 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0041
+::1 - - [24/Mar/2019:13:12:27 +0800] "GET / HTTP/1.1" 200 2392 0.0730
+::1 - - [24/Mar/2019:13:12:27 +0800] "GET /assets/js/application.js HTTP/1.1" 200 10343 0.0018
+::1 - - [24/Mar/2019:13:12:27 +0800] "GET /assets/js/chartkick.js HTTP/1.1" 200 26324 0.0047
+NoMethodError: undefined method `purchased_by_day' for nil:NilClass
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:11:in `block (3 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1068:in `always'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1059:in `_verb'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:681:in `get'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:9:in `block (2 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1133:in `if_match'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:799:in `on'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/chart.rb:7:in `block in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda/plugins/multi_route.rb:216:in `route'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/app.rb:65:in `block (2 levels) in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:1133:in `if_match'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:799:in `on'
+	/home/vicxu/Projects/ISS_PAY/iss_pay_api/app/controllers/app.rb:64:in `block in <class:App>'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:530:in `block in _roda_handle_main_route'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:528:in `catch'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:528:in `_roda_handle_main_route'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/roda-3.18.0/lib/roda.rb:420:in `block in base_rack_app_callable'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:232:in `context'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/session/abstract/id.rb:226:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/tempfile_reaper.rb:15:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/lint.rb:49:in `_call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/lint.rb:37:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/show_exceptions.rb:23:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/common_logger.rb:33:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/chunked.rb:54:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/rack-2.0.6/lib/rack/content_length.rb:15:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/configuration.rb:225:in `call'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:658:in `handle_request'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:472:in `process_client'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/server.rb:332:in `block in run'
+	/home/vicxu/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/puma-3.12.0/lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+::1 - - [24/Mar/2019:13:12:27 +0800] "GET /favicon.ico HTTP/1.1" 404 - 0.0042
+::1 - - [24/Mar/2019:13:12:27 +0800] "GET /chart/user_purchased HTTP/1.1" 500 102321 0.0349
+::1 - - [24/Mar/2019:13:12:33 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0054
+=== puma startup: 2019-03-24 13:13:10 +0800 ===
+::1 - - [24/Mar/2019:13:13:14 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0047
+36.229.62.91 - - [24/Mar/2019:13:13:39 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0126
+36.229.62.91 - - [24/Mar/2019:13:13:40 +0800] "GET /favicon.ico HTTP/1.1" 404 - 0.0029
+=== puma startup: 2019-03-24 13:13:47 +0800 ===
+::1 - - [24/Mar/2019:13:13:49 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0076
+::1 - - [24/Mar/2019:13:13:50 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0077
+::1 - - [24/Mar/2019:13:13:51 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0058
+::1 - - [24/Mar/2019:13:13:51 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0114
+=== puma startup: 2019-03-24 13:14:02 +0800 ===
+::1 - - [24/Mar/2019:13:14:06 +0800] "GET /api/v1/items?category=drink&page=1&message_id=1277419499034510&response_type=chatbot_msg HTTP/1.1" 200 49 0.0166
+::1 - - [24/Mar/2019:13:14:06 +0800] "GET /favicon.ico HTTP/1.1" 404 - 0.0042

@@ -1,5 +1,5 @@
 module IssPay
-  
+
   class User < Sequel::Model(:users)
     many_to_many :purchases, class: 'IssPay::Item',
                   join_table: :transactions,
@@ -14,12 +14,12 @@ module IssPay
     def full_name
       last_name + first_name
     end
-    
+
     def admin?
       member_type.gsub(' ',"") == 'Admin'
     end
 
-    def balance 
+    def balance
       credit - debit
     end
 
@@ -52,20 +52,25 @@ module IssPay
         transactions = Transaction.where(user_id: id, status: 0).all
       elsif type == 'transfer'
         transactions = Transaction.where(user_id: id, type: type, status: 0).all
-      end 
+      end
       sum_of_transactions(transactions)
     end
+
 
     def credit
       transactions = Transaction.where(receiver_id: id, status: 0)
       sum_of_transactions(transactions)
     end
 
-    def self.attributes 
+    def self.attributes
       ['message_id', 'email', 'student_id', 'name', 'member_type', 'credit', 'purchase_debit', 'transfer_debit']
     end
 
     private
+
+    def query
+
+    end
 
     def sum_of_transactions(transactions)
       return 0 if transactions.empty?

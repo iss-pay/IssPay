@@ -7,7 +7,7 @@ module IssPay
       routing.on String do |message_id|
         if routing.params['response_type'] == 'chatbot_msg'
           user = User.find(message_id: message_id)
-          Representer::ChatBotMsg.new(user).send_balance
+          Representer::ChatBotMsg.send_balance(user)
         else
         end
       end

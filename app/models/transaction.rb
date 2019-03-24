@@ -1,5 +1,5 @@
 module IssPay
-  
+
   class Transaction < Sequel::Model(:transactions)
 
     def item
@@ -9,7 +9,7 @@ module IssPay
     def owner
       User.find(id: user_id)
     end
-    
+
     def receiver
       User.find(id: receiver_id) unless receiver_id.nil?
     end
@@ -19,7 +19,6 @@ module IssPay
     end
 
     def after_create
-      
       if type == 'purchase'
         item.quantity_('purchase')
       end

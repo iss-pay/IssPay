@@ -1,7 +1,7 @@
 module ChatFuel
 
   class Attachment
-    def initialize(type=nil, payload)
+    def initialize(type:, payload:)
       @type = type || "template"
       @payload = payload
     end
