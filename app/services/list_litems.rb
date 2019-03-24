@@ -14,7 +14,7 @@ module IssPay
 
       def overdraft?(input)
         user = User.find(message_id: input['message_id'])
-        last_unpay_transactions = Transaction.where(user_id: user.id, status: 0){created_at < Time.now.strftime("%m %Y")}.all
+        last_unpay_transactions = Transaction.where(user_id: user.id, status: 0){created_at < Time.now.strftime("%Y-%m-01 00:00:00")}.all
         if input['response_type'] == 'chatbot_msg' && last_unpay_transactions.count > 0
           Failure(Representer::ChatBotMsg.send_text("你#{Time.now.strftime("%Y-%m")}之前的帳款沒還，請先還錢！"))
         else
