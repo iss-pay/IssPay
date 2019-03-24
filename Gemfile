@@ -50,6 +50,4 @@ group :development, :test do
   gem 'minitest', '~> 5.11', '>= 5.11.3'
 end
 
-group :production do
-  gem 'pg'
-end
+gem 'pg'
